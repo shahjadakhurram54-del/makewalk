@@ -471,7 +471,7 @@ def loadRetargetSimplify(context, filepath):
     from .fkik import limbsBendPositive
 
     print("\nLoad and retarget %s" % filepath)
-    time1 = time.clock()
+    time1 = time1 = time.perf_counter()
     scn = context.scene
     trgRig = context.object
     data = changeTargetData(trgRig, scn)
@@ -492,7 +492,7 @@ def loadRetargetSimplify(context, filepath):
             load.deleteSourceRig(context, srcRig, 'Y_')
     finally:
         restoreTargetData(trgRig, data)
-    time2 = time.clock()
+    time2 = time1 = time.perf_counter()
     print("%s finished in %.3f s" % (filepath, time2-time1))
     return
 
@@ -595,3 +595,4 @@ def initialize():
 def uninitialize():
     for cls in classes:
         bpy.utils.unregister_class(cls)
+
